@@ -123,3 +123,5 @@ replay_pid*
 .classpath
 .projet
 MANIFEST.MF
+context.xml
+/build/
