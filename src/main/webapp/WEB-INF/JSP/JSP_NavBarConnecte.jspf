@@ -1,0 +1,49 @@
+<nav
+      class="navbar navbar-expand-lg bg-secondary col-xxl-8 mx-auto rounded-3"
+      style="--bs-bg-opacity: 0.5"
+    >
+      <div class="container-fluid">
+        <h1 class="fst-italic font-monospace fs-2 text">Candidature.fr</h1>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto fs-5 text">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="<%=request.getContextPath()%>/ServletAccueilEncheresConnecte"
+                >Mes candidatures</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="ServletVendreNouvelArticle"
+                >Mes entreprises</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="<%=request.getContextPath()%>/ServletProfil?pseudoAAfficher=${utilisateur_connecte.getPseudo()}"
+                >Mon profil (${utilisateur_connecte.getPseudo()})</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="<%=request.getContextPath()%>/ServletAccueilEncheres?deconnexion=ok"
+                >Déconnexion</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
