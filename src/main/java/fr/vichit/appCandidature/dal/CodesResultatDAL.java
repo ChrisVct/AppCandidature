@@ -6,11 +6,13 @@ package fr.vichit.appCandidature.dal;
 public abstract class CodesResultatDAL {
 	
 	/**
-	 * Echeclors de l'ajout du nouvel utilisateur
+	 * Echec lors de l'ajout du nouvel utilisateur
 	 */
 	public static final int INSERT_UTILISATEUR=10000;
-
-
+	/**
+	 * Echec lors de la récupération des utilisateurs en BDD
+	 */
+	public static final int SELECT_ALL_UTILISATEUR=10001;
 
 
 }
