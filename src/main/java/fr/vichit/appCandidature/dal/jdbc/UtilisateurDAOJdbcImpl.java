@@ -16,12 +16,12 @@ import fr.vichit.appCandidature.dal.DAO;
 public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur>{
 	private static final String INSERT = "INSERT INTO UTILISATEURS VALUES (?, ?)";
 	private static final String SELECT_ALL = "SELECT * FROM UTILISATEURS";
+	private static final String UPDATE = "UPDATE UTILISATEURS SET mot_de_passe=? WHERE pseudo=?";
 
 	@Override
 	public void insert(Utilisateur t) throws BusinessException {
 		try (Connection cnx = ConnectionProvider.getConnection()){
 			PreparedStatement pstmt ;
-			ResultSet rs;
 			
 			pstmt = cnx.prepareStatement(INSERT);
 			
@@ -70,7 +70,20 @@ public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur>{
 
 	@Override
 	public void update(Utilisateur t) throws BusinessException {
-		// TODO Auto-generated method stub
+		try (Connection cnx = ConnectionProvider.getConnection()){
+			PreparedStatement pstmt ;
+			pstmt = cnx.prepareStatement(UPDATE);
+			pstmt.setString(1,t.getMotDePasse());
+			pstmt.setString(2,t.getPseudo());
+			
+			pstmt.executeUpdate();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			BusinessException businessException = new BusinessException();
+			businessException.ajouterErreur(CodesResultatDAL.UPDATE_UTILISATEUR);
+			throw businessException;
+		}
 		
 	}
 

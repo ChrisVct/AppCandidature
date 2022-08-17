@@ -13,6 +13,10 @@ public abstract class CodesResultatDAL {
 	 * Echec lors de la récupération des utilisateurs en BDD
 	 */
 	public static final int SELECT_ALL_UTILISATEUR=10001;
+	/**
+	 * Echec lors de la mise à jour des informations utilisateurs EN BDD
+	 */
+	public static final int UPDATE_UTILISATEUR=10002;
 
 
 }

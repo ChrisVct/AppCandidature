@@ -20,26 +20,26 @@
             <li class="nav-item">
               <a
                 class="nav-link"
-                href="<%=request.getContextPath()%>/ServletAccueilEncheresConnecte"
+                href="ServletAccueilCandidatures"
                 >Mes candidatures</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="ServletVendreNouvelArticle"
+              <a class="nav-link" href="ServletAccueilEntreprises"
                 >Mes entreprises</a
               >
             </li>
             <li class="nav-item">
               <a
                 class="nav-link"
-                href="<%=request.getContextPath()%>/ServletProfil?pseudoAAfficher=${utilisateur_connecte.getPseudo()}"
-                >Mon profil (${utilisateur_connecte.getPseudo()})</a
+                href="ServletModifierProfil"
+                >Mon profil (${utilisateur_connecte})</a
               >
             </li>
             <li class="nav-item">
               <a
                 class="nav-link"
-                href="<%=request.getContextPath()%>/ServletAccueilEncheres?deconnexion=ok"
+                href="ServletConnexion?deconnexion=ok"
                 >Déconnexion</a
               >
             </li>

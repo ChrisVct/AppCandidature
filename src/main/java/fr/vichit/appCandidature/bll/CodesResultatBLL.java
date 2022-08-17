@@ -21,5 +21,9 @@ public abstract class CodesResultatBLL {
 	 * Les deux mots de passe fournis ne sont pas identiques
 	 */
 	public static final int MOTS_DE_PASSE_INCOHERENTS=20003;
+	/**
+	 * Erreur d'authenfication (pseudo n'existe pas ou mdp non valide)
+	 */
+	public static final int AUTHENTIFICATION_ERREUR=20004;
 
 }

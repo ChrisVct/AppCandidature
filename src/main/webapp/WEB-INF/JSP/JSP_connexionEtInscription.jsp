@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bootstrap demo</title>
+    <title>Candidature.fr - Accueil</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -42,27 +42,27 @@
       <form action="ServletConnexion" method="post" class="col-5">
         <h2 class="text-center my-5">Se Connecter</h2>
         <div class="mb-3 row">
-          <label for="pseudo" class="col-sm-4 col-form-label">Pseudo</label>
+          <label for="pseudoConnexion" class="col-sm-4 col-form-label">Pseudo</label>
           <div class="col-sm-8">
             <input
               type="text"
               class="form-control"
-              id="pseudo"
-              name="pseudo"
+              id="pseudoConnexion"
+              name="pseudoConnexion"
               required
             />
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="motDePasse" class="col-sm-4 col-form-label"
+          <label for="motDePasseConnexion" class="col-sm-4 col-form-label"
             >Mot De Passe</label
           >
           <div class="col-sm-8">
             <input
               type="text"
               class="form-control"
-              id="motDePasse"
-              name="motDePasse"
+              id="motDePasseConnexion"
+              name="motDePasseConnexion"
               required
             />
           </div>

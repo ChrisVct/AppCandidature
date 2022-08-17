@@ -49,6 +49,44 @@ public class UtilisateurManager {
 		//ajout en liste tampon
 		listeUtilisateurs.add(utilisateurAAjouter);
 	}
+	public void verifierConnection(String pseudo, String motDePasse) throws BusinessException {
+		BusinessException businessException = new BusinessException();
+		boolean identifiantsOK=false;
+
+		this.verifierNullite(pseudo, businessException);
+		this.verifierNullite(motDePasse, businessException);
+		if (businessException.hasErreurs()) {
+			throw businessException;
+		}
+		
+		identifiantsOK= this.verifierIdentifiants(pseudo,motDePasse);
+		if(!identifiantsOK) {
+			businessException.ajouterErreur(CodesResultatBLL.AUTHENTIFICATION_ERREUR);
+			throw businessException;
+		}
+	}
+	public void mettreAJourMDP(String pseudo, String ancienMDP, String nouveauMDP, String confNouveauMDP) throws BusinessException {
+		BusinessException businessException = new BusinessException();
+		this.verifierNullite(pseudo, businessException);
+		this.verifierNullite(ancienMDP, businessException);
+		this.verifierNullite(nouveauMDP, businessException);
+		this.verifierNullite(confNouveauMDP, businessException);
+		if (businessException.hasErreurs()) {
+			throw businessException;
+		}
+		this.verifierConnection(pseudo, ancienMDP);
+		this.verifierConformiteMotDePasse(nouveauMDP, businessException);
+		this.verifierCoherenceMotsDePasse(nouveauMDP,confNouveauMDP,businessException);
+		if (businessException.hasErreurs()) {
+			throw businessException;
+		}
+		Utilisateur utilisateurAActualiser = new Utilisateur(pseudo, hasherMotDePasse(nouveauMDP));
+		daoUtilisateur.update(utilisateurAActualiser);
+		for (Utilisateur u : listeUtilisateurs) {
+			if(pseudo.equalsIgnoreCase(u.getPseudo()))
+				u.setMotDePasse(hasherMotDePasse(confNouveauMDP));
+		}
+	}
 
 
 	private void verifierNullite(String champs, BusinessException businessException) {
@@ -107,5 +145,18 @@ public class UtilisateurManager {
 		}
 		return hexString.toString();
 	}
+	private boolean verifierIdentifiants(String pseudo, String motDePasse) {
+		boolean identifiantsOK = false;
+		for (Utilisateur u : listeUtilisateurs) {
+			if(pseudo.equalsIgnoreCase(u.getPseudo()))
+			{
+				if(hasherMotDePasse(motDePasse).equals(u.getMotDePasse())) {
+					identifiantsOK=true;
+				}
+			}
+		}
+		return identifiantsOK ;
+	}
+
 	
 }
